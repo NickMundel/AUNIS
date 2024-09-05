@@ -28,7 +28,7 @@ public abstract class StargateAbstractMemberBlock extends Block {
         super(Material.IRON);
 
         setRegistryName(Aunis.ModID + ":" + blockName);
-        setUnlocalizedName(Aunis.ModID + "." + blockName);
+        //setUnlocalizedName(Aunis.ModID + "." + blockName);
 
         setSoundType(SoundType.METAL);
         setCreativeTab(Aunis.aunisCreativeTab);

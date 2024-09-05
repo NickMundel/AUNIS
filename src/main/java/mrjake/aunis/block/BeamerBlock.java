@@ -21,10 +21,13 @@ import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fluids.FluidUtil;
 import net.minecraftforge.items.CapabilityItemHandler;
+
+import static net.minecraft.util.EnumFacing.HORIZONTALS;
 
 public class BeamerBlock extends Block {
 	
@@ -34,7 +37,7 @@ public class BeamerBlock extends Block {
 		super(Material.IRON);
 		
 		setRegistryName(Aunis.ModID + ":" + BLOCK_NAME);
-		setUnlocalizedName(Aunis.ModID + "." + BLOCK_NAME);
+		//setUnlocalizedName(Aunis.ModID + "." + BLOCK_NAME);
 		
 		setSoundType(SoundType.METAL); 
 		setCreativeTab(Aunis.aunisCreativeTab);
@@ -62,7 +65,7 @@ public class BeamerBlock extends Block {
 	@Override
 	public IBlockState getStateFromMeta(int meta) {		
 		return getDefaultState()
-				.withProperty(AunisProps.FACING_HORIZONTAL, EnumFacing.getHorizontal(meta & 0x03));
+				.withProperty(AunisProps.FACING_HORIZONTAL, HORIZONTALS[MathHelper.abs(meta & 0x03 % HORIZONTALS.length)]);
 	}
 	
 	@Override
@@ -151,8 +154,7 @@ public class BeamerBlock extends Block {
 	
 	// ------------------------------------------------------------------------
 	// Rendering
-	
-	@Override
+
 	public BlockRenderLayer getBlockLayer() {
 		return BlockRenderLayer.CUTOUT;
 	}

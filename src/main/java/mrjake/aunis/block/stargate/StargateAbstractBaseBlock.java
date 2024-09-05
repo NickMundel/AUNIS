@@ -26,13 +26,15 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
+import static net.minecraft.util.EnumFacing.HORIZONTALS;
+
 public abstract class StargateAbstractBaseBlock extends Block {
 
     public StargateAbstractBaseBlock(String blockName) {
         super(Material.IRON);
 
         setRegistryName(Aunis.ModID + ":" + blockName);
-        setUnlocalizedName(Aunis.ModID + "." + blockName);
+        //setUnlocalizedName(Aunis.ModID + "." + blockName);
 
         setSoundType(SoundType.METAL);
         setCreativeTab(Aunis.aunisCreativeTab);
@@ -65,7 +67,7 @@ public abstract class StargateAbstractBaseBlock extends Block {
     public IBlockState getStateFromMeta(int meta) {
         return getDefaultState()
                 .withProperty(AunisProps.RENDER_BLOCK, (meta & 0x04) != 0)
-                .withProperty(AunisProps.FACING_HORIZONTAL, EnumFacing.getHorizontal(meta & 0x03));
+                .withProperty(AunisProps.FACING_HORIZONTAL, HORIZONTALS[meta & 0x03]);
     }
 
 

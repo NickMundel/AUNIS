@@ -49,7 +49,7 @@ public class UniverseDialerItem extends Item implements CustomModelItemInterface
 
 	public UniverseDialerItem() {
 		setRegistryName(new ResourceLocation(Aunis.ModID, ITEM_NAME));
-		setUnlocalizedName(Aunis.ModID + "." + ITEM_NAME);
+		//setUnlocalizedName(Aunis.ModID + "." + ITEM_NAME);
 		
 		setCreativeTab(Aunis.aunisCreativeTab);
 		// setMaxStackSize(1);

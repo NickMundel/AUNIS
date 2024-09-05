@@ -34,6 +34,8 @@ import net.minecraft.world.World;
 import net.minecraftforge.fluids.FluidUtil;
 import net.minecraftforge.items.CapabilityItemHandler;
 
+import static net.minecraft.util.EnumFacing.HORIZONTALS;
+
 public class DHDBlock extends Block {
 	
 	public static final String BLOCK_NAME = "dhd_block";
@@ -42,7 +44,7 @@ public class DHDBlock extends Block {
 		super(Material.IRON);
 		
 		setRegistryName(Aunis.ModID + ":" + BLOCK_NAME);
-		setUnlocalizedName(Aunis.ModID + "." + BLOCK_NAME);
+		//setUnlocalizedName(Aunis.ModID + "." + BLOCK_NAME);
 		
 		setSoundType(SoundType.METAL); 
 		setCreativeTab(Aunis.aunisCreativeTab);
@@ -86,7 +88,7 @@ public class DHDBlock extends Block {
 	public static boolean isSnowAroundBlock(IBlockAccess world, BlockPos inPos) {
 				
 		// Check if 4 adjacent blocks are snow layers
-		for (EnumFacing facing : EnumFacing.HORIZONTALS) {
+		for (EnumFacing facing : HORIZONTALS) {
 			BlockPos pos = inPos.offset(facing);
 			if (!SNOW_MATCHER.apply(world.getBlockState(pos))) {
 				return false;
@@ -118,7 +120,7 @@ public class DHDBlock extends Block {
 	
 	@Override
 	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {		
-		EnumFacing dhdFacingOpposite = EnumFacing.getHorizontal( Math.round(state.getValue(AunisProps.ROTATION_HORIZONTAL)/4.0f) );
+		EnumFacing dhdFacingOpposite = HORIZONTALS[Math.round(state.getValue(AunisProps.ROTATION_HORIZONTAL)/4.0f)];
 		boolean backActivation = (facing == dhdFacingOpposite);
 		
 		if (!world.isRemote) {

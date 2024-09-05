@@ -35,7 +35,7 @@ public class FluidColors {
 			return;
 		
 		try {
-			ResourceLocation resourceLocation = new ResourceLocation(fluid.getStill().getResourceDomain(), "textures/" + fluid.getStill().getResourcePath() + ".png");
+			ResourceLocation resourceLocation = new ResourceLocation(fluid.getStill().getPath(), "textures/" + fluid.getStill().getPath() + ".png");
 			IResource resource = Minecraft.getMinecraft().getResourceManager().getResource(resourceLocation);
 			BufferedImage bufferedImage = TextureUtil.readBufferedImage(resource.getInputStream());
 			Raster raster = bufferedImage.getRaster();

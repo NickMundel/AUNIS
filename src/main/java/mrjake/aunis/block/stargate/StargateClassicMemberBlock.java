@@ -32,6 +32,7 @@ import net.minecraft.util.NonNullList;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.registry.IRegistry;
 import net.minecraft.world.IBlockAccess;
@@ -39,6 +40,8 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.property.ExtendedBlockState;
 import net.minecraftforge.common.property.IExtendedBlockState;
 import net.minecraftforge.common.property.IUnlistedProperty;
+
+import static net.minecraft.util.EnumFacing.HORIZONTALS;
 
 public abstract class StargateClassicMemberBlock extends StargateAbstractMemberBlock {
 	
@@ -114,7 +117,7 @@ public abstract class StargateClassicMemberBlock extends StargateAbstractMemberB
 		return getDefaultState()
 				.withProperty(AunisProps.MEMBER_VARIANT, EnumMemberVariant.byId((meta >> 3) & 0x01))
 				.withProperty(AunisProps.RENDER_BLOCK, (meta & 0x04) != 0)
-				.withProperty(AunisProps.FACING_HORIZONTAL, EnumFacing.getHorizontal(meta & 0x03));
+				.withProperty(AunisProps.FACING_HORIZONTAL, HORIZONTALS[MathHelper.abs(meta & 0x03 % HORIZONTALS.length)]);
 	}
 	
 	
@@ -364,8 +367,7 @@ public abstract class StargateClassicMemberBlock extends StargateAbstractMemberB
 	public int getLightOpacity(IBlockState state, IBlockAccess world, BlockPos pos) {
 		return CamoPropertiesHelper.getLightOpacity(state, world, pos);
 	}
-	
-	@Override
+
 	public BlockRenderLayer getBlockLayer() {
 		return BlockRenderLayer.SOLID;
 	}

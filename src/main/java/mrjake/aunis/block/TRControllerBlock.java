@@ -22,8 +22,11 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+
+import static net.minecraft.util.EnumFacing.HORIZONTALS;
 
 public class TRControllerBlock extends Block {
 	
@@ -33,7 +36,7 @@ public class TRControllerBlock extends Block {
 		super(Material.ROCK);
 		
 		setRegistryName(Aunis.ModID + ":" + blockName);
-		setUnlocalizedName(Aunis.ModID + "." + blockName);
+		//setUnlocalizedName(Aunis.ModID + "." + blockName);
 		
 		setSoundType(SoundType.STONE); 
 		setCreativeTab(Aunis.aunisCreativeTab);
@@ -60,8 +63,7 @@ public class TRControllerBlock extends Block {
 	
 	@Override
 	public IBlockState getStateFromMeta(int meta) {		
-		return getDefaultState()
-				.withProperty(AunisProps.FACING_HORIZONTAL, EnumFacing.getHorizontal(meta & 0x03));
+		return getDefaultState().withProperty(AunisProps.FACING_HORIZONTAL, HORIZONTALS[MathHelper.abs(meta & 0x03 % HORIZONTALS.length)]);
 	}
 	
 	

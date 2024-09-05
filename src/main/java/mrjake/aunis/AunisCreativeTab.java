@@ -9,9 +9,9 @@ public class AunisCreativeTab extends CreativeTabs {
 	public AunisCreativeTab() {
 		super(Aunis.ModID);
 	}
-	
+
 	@Override
-	public ItemStack getTabIconItem() {
+	public ItemStack createIcon() {
 		return new ItemStack(AunisBlocks.STARGATE_MILKY_WAY_BASE_BLOCK);
 	}
 }

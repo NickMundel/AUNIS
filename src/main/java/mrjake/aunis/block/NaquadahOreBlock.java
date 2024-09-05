@@ -22,7 +22,7 @@ public class NaquadahOreBlock extends Block {
 		super(Material.ROCK);
 		
 		setRegistryName(Aunis.ModID + ":" + blockName);
-		setUnlocalizedName(Aunis.ModID + "." + blockName);
+		//setUnlocalizedName(Aunis.ModID + "." + blockName);
 		
 		setSoundType(SoundType.STONE); 
 		setCreativeTab(Aunis.aunisCreativeTab);
@@ -45,8 +45,7 @@ public class NaquadahOreBlock extends Block {
         Random rand = world instanceof World ? ((World)world).rand : new Random();
         return MathHelper.getInt(rand, 5, 10);
 	}
-	
-	@Override
+
 	public BlockRenderLayer getBlockLayer() {
 		return BlockRenderLayer.CUTOUT;
 	}

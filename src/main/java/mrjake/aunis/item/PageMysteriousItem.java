@@ -23,7 +23,7 @@ public class PageMysteriousItem extends Item {
 
 	public PageMysteriousItem() {
 		setRegistryName(Aunis.ModID + ":" + ITEM_NAME);
-		setUnlocalizedName(Aunis.ModID + "." + ITEM_NAME);
+		//setUnlocalizedName(Aunis.ModID + "." + ITEM_NAME);
 		
 		setCreativeTab(Aunis.aunisCreativeTab);
 	}

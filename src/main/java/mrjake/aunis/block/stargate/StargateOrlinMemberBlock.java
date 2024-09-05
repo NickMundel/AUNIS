@@ -22,8 +22,11 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+
+import static net.minecraft.util.EnumFacing.HORIZONTALS;
 
 public final class StargateOrlinMemberBlock extends StargateAbstractMemberBlock {
 	
@@ -80,8 +83,9 @@ public final class StargateOrlinMemberBlock extends StargateAbstractMemberBlock 
 	@Override
 	public IBlockState getStateFromMeta(int meta) {		
 		return getDefaultState()
+
 				.withProperty(AunisProps.RENDER_BLOCK, (meta & 0x08) != 0)
-				.withProperty(AunisProps.ORLIN_VARIANT, EnumFacing.getFront(meta & 0x07));
+				.withProperty(AunisProps.ORLIN_VARIANT, HORIZONTALS[MathHelper.abs(meta & 0x07 % HORIZONTALS.length)]);
 	}
 	
 	

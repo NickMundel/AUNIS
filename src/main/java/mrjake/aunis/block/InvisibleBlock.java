@@ -23,7 +23,7 @@ public class InvisibleBlock extends Block {
 		super(Material.AIR);
 		
 		setRegistryName(Aunis.ModID + ":" + blockName);
-		setUnlocalizedName(Aunis.ModID + "." + blockName);
+		//setUnlocalizedName(Aunis.ModID + "." + blockName);
 		
 		setDefaultState(blockState.getBaseState()
 				.withProperty(AunisProps.HAS_COLLISIONS, true));
