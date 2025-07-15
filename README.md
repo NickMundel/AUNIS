@@ -1,6 +1,5 @@
-## UNMAINTAINED
-This project is currently unmaintained, for a successor see [Just Stargate Mod](https://www.curseforge.com/minecraft/mc-mods/jsg).
-<br><br><br>
+## This Fork fixes build problems with the original version
+Requires jdk 8
 
 # AUNIS
 
